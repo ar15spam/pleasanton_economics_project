@@ -40,6 +40,10 @@ const BuisnessSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    password: {
+      type: String,
+      required: true
+    },
     website: {
         type: String
     },

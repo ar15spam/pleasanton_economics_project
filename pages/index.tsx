@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router';
+
 
 type Props = {}
 
 export default function index({}: Props) {
-  return (
-    <div>index</div>
+  const router = useRouter(); 
+
+  useEffect(() => {
+    router.push('/signup'); 
+  }, []); 
+
+  return(
+    <div>
+      ...Redirecting
+    </div>
   )
 }

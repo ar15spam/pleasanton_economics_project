@@ -1,13 +1,14 @@
-import express from "express";
+import express, { Router } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors"; 
-
-dotenv.config()
+import usersignuprouter from "./routes/auth/usersignup.js"
 
 const app = express(); 
-app.use(morgan());
+dotenv.config();
+const morganFormat = ':method :url :status :res[content-length] - :response-time ms';
+app.use(morgan(morganFormat));
 app.use(express.json());
 
 const corsOptions = {
@@ -15,6 +16,8 @@ const corsOptions = {
     methods: ["GET", "POST"]
 };
 app.use(cors(corsOptions));
+
+app.use(usersignuprouter);
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
